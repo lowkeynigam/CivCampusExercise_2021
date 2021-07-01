@@ -9,11 +9,15 @@ namespace CivCampusExercise_2021.models {
         public int ClosingHour { get; set; }
 
 
-        public AmenitiesBuilding() : base("default") {
-
-        }
-
-        //TODO: add constructor that initialises the attributes and parent constructor
+        public AmenitiesBuilding() : base("default") {}
         
+        //TODO: add constructor that initialises the attributes and parent constructor
+        public AmenitiesBuilding(string Type, string BuildingId, int OpeningHour, int ClosingHour) : base(BuildingId)
+         {
+            this.Type = Type;
+            this.BuildingId = BuildingId;
+            this.OpeningHour = OpeningHour;
+            this.ClosingHour = ClosingHour;
+        } 
     }
 }

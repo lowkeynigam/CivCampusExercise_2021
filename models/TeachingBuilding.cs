@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace CivCampusExercise_2021.models
 {
@@ -13,12 +14,14 @@ namespace CivCampusExercise_2021.models
             this.Rooms = new List<Room>();
         }
 
-        public void AddRoom(int capacity, int roomNo) {
+        public void AddRoom(uint capacity, int roomNo) {
             //TODO: make roomId a string created from buildingId + RoomNo as text
-            string roomId = "";
-            
+            Room room = new Room(capacity, roomNo, roomNo + BuildingId);
+
+            Console.WriteLine(room.RoomId);
+
             //TODO: fix the below to add the new room to the rooms list
-            Rooms.Add(new Room(0, 0, null));
+            Rooms.Add(room);
         }
 
         /// <summary>
@@ -38,7 +41,10 @@ namespace CivCampusExercise_2021.models
             int total = 0;
             
             // TODO: calculate and store into total all of the room capacities for the building combined
-
+            foreach (Room room in Rooms)
+            {
+                total += checked((int)room.Capacity);
+            }
             return total;
         }
     }
